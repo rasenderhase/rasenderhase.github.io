@@ -1,0 +1,233 @@
+/* ==========================================================================
+   Visitenkarten-Stylesheet - Knees Engineering GmbH
+   Farbkonzept & Typografie für maximale Lesbarkeit, Barrierefreiheit & Klarheit
+   ========================================================================== */
+
+:root {
+    /* Basisfarben (Corporate Identity) */
+    --primary: #04345C;
+    --secondary: #5591C2;
+    --third: #D6EDFF;
+
+    /* Schriftfarben / Textfarben */
+    --primary-text: #0F172A;     /* Haupttext: Maximaler Kontrast & ermüdungsfreies Lesen */
+    --secondary-text: #475569;   /* Sekundärtext: Für dezentere Angaben, Metadaten und Nebentexte */
+    --third-text: #FFFFFF;       /* Inverser Kontrasttext: Für dunkle Hintergründe (z.B. auf Primary) */
+    --thrid-text: var(--third-text); /* Unterstützung alternativer Schreibweise */
+
+    /* Abgeleitete funktionale Farben */
+    --bg-page: #F8FAFC;
+    --bg-card: #FFFFFF;
+    --border-color: #E2E8F0;
+    --focus-ring: rgba(85, 145, 194, 0.4);
+
+    /* Abstände und Radien */
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px -1px rgba(4, 52, 92, 0.08), 0 2px 4px -2px rgba(4, 52, 92, 0.05);
+    --shadow-lg: 0 10px 15px -3px rgba(4, 52, 92, 0.1), 0 4px 6px -4px rgba(4, 52, 92, 0.05);
+}
+
+/* --------------------------------------------------------------------------
+   Basis-Reset & Typografie
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.65;
+    color: var(--primary-text);
+    background-color: var(--bg-page);
+    min-height: 100vh;
+    padding: 2.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* --------------------------------------------------------------------------
+   Layout-Container
+   -------------------------------------------------------------------------- */
+.container,
+body > * {
+    width: 100%;
+    max-width: 800px;
+}
+
+/* --------------------------------------------------------------------------
+   Visitenkarten-Header / Hero-Bereich
+   -------------------------------------------------------------------------- */
+body > p:first-of-type {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--secondary);
+    margin-bottom: 0.5rem;
+}
+
+h1 {
+    font-size: clamp(1.85rem, 4vw, 2.75rem);
+    font-weight: 800;
+    line-height: 1.2;
+    color: var(--primary);
+    margin-bottom: 2rem;
+    letter-spacing: -0.02em;
+}
+
+/* --------------------------------------------------------------------------
+   Trennlinien
+   -------------------------------------------------------------------------- */
+hr {
+    border: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border-color), transparent);
+    margin: 2.5rem 0;
+    width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   Sektionen (Impressum, Datenschutz)
+   -------------------------------------------------------------------------- */
+section {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 2rem 2.25rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+section:hover {
+    border-color: var(--third);
+    box-shadow: var(--shadow-md);
+}
+
+h2 {
+    font-size: 1.5rem;
+    color: var(--primary);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--third);
+    display: inline-block;
+}
+
+h3 {
+    font-size: 1.05rem;
+    color: var(--primary);
+    font-weight: 600;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+section > h3:first-of-type {
+    margin-top: 0;
+}
+
+p {
+    color: var(--primary-text);
+    margin-bottom: 1rem;
+    font-size: 0.975rem;
+}
+
+strong {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+ul {
+    margin: 0.75rem 0 1.25rem 1.5rem;
+    color: var(--primary-text);
+}
+
+li {
+    margin-bottom: 0.4rem;
+    font-size: 0.95rem;
+}
+
+li strong {
+    color: var(--primary);
+}
+
+/* --------------------------------------------------------------------------
+   Interaktive Elemente & Links
+   -------------------------------------------------------------------------- */
+a {
+    color: var(--secondary);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+
+a:hover,
+a:focus-visible {
+    color: var(--primary);
+    text-decoration-thickness: 2px;
+}
+
+a:focus-visible {
+    outline: 2px solid var(--secondary);
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   Footer
+   -------------------------------------------------------------------------- */
+footer {
+    text-align: center;
+    padding: 1.5rem 0;
+    font-size: 0.875rem;
+    color: var(--secondary-text);
+}
+
+footer p {
+    color: var(--secondary-text);
+}
+
+/* --------------------------------------------------------------------------
+   Hilfs- & Utility-Klassen
+   -------------------------------------------------------------------------- */
+.bg-primary { background-color: var(--primary); color: var(--third-text); }
+.bg-secondary { background-color: var(--secondary); color: var(--third-text); }
+.bg-third { background-color: var(--third); color: var(--primary-text); }
+
+.text-primary { color: var(--primary); }
+.text-secondary { color: var(--secondary); }
+.text-third { color: var(--third); }
+
+.text-primary-var { color: var(--primary-text); }
+.text-secondary-var { color: var(--secondary-text); }
+.text-third-var { color: var(--third-text); }
+
+/* --------------------------------------------------------------------------
+   Mobile Optimierung
+   -------------------------------------------------------------------------- */
+@media (max-width: 640px) {
+    body {
+        padding: 1.5rem 1rem;
+    }
+
+    section {
+        padding: 1.25rem 1.25rem;
+    }
+
+    h1 {
+        margin-bottom: 1.25rem;
+    }
+}
